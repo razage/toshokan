@@ -1,0 +1,16 @@
+# file extensions
+*.pyc
+
+# folders
+.idea/
+__pycache__/
+node_modules/
+toshokan/manga
+toshokan/static/.webassets-cache
+toshokan/static/bower_components
+toshokan/static/manga
+
+# specific files
+config.json
+database.db
+database.db-journal

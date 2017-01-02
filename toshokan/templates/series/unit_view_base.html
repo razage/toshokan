@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="media series-info test">
+        <div class="media-left">
+            <img class="media-object" src="http://placehold.it/300x400">
+        </div>
+        <div class="media-body media-middle">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th colspan="2"><h2>{{ series.name }}</h2></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Author:</td>
+                        <td>{% if series.author is not none %}{{ series.author }}{% else %}N/a{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <td>Content Rating:</td>
+                        <td>{{ series.age_rating }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr />
+    </div>
+    <div class="series-list scroll">
+        {% block subunits %}
+        {% endblock %}
+    </div>
+{% endblock %}

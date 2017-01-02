@@ -1,0 +1,13 @@
+{% extends "series/unit_view_base.html" %}
+{% block subunits %}
+    {% if volume.chapters|length > 0 %}
+        {% for c in volume.chapters %}
+            <div class="chapter media" data-sid="{{ volume.series.id }}" data-vid="{{ volume.id }}" data-cid="{{ c.id }}">
+                <div class="media-body">
+                    <img class="media-object" src="http://placehold.it/218x325">
+                    <p class="caption">{% if c.name is not none %}{{ c.name }}{% else %}Chapter {{ c.number }}{% endif %}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
