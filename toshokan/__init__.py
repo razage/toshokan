@@ -1,8 +1,7 @@
 from os.path import join
 
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from flask_assets import Environment, Bundle
-from flask_resize import Resize
 from flask_sqlalchemy import SQLAlchemy
 
 from .utils import get_directory_tree, scan_directory, tree2db
@@ -19,12 +18,15 @@ assets.url = app.static_url_path
 scss = Bundle("scss/main.scss", filters='pyscss', output="css/main.css")
 assets.register('scss_all', scss)
 
-resize = Resize(app)
-
 
 @app.route('/')
 def home():
     return render_template("main.html", title="Home", page="home")
+
+
+@app.route('/manga/<path:filename>')
+def manga(filename):
+    return send_from_directory(str(app.config['LIBRARY']), filename)
 
 
 @app.route('/update')

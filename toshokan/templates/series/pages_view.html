@@ -3,8 +3,8 @@
     {% if chapter.pages|length > 0 %}
         {% for p in chapter.pages %}
             <div class="page media">
-                <div class="media-body">
-                    <img class="media-object" src="{{ url_for('static', filename=cdir + p.filename)|resize('218x325', format='jpg') }}">
+                <div class="media-body page-preview">
+                    <img class="media-object" src="{{ url_for('manga', filename=cdir + p.filename) }}">
                     <p class="caption">{{ p.number }}</p>
                 </div>
             </div>

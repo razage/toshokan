@@ -35,4 +35,4 @@ def series_chapter_page_view(sid, vid, cid):
     return render_template("series/pages_view.html",
                            title="%s Volume %s Chapter %s" % (c.volume.series.name, c.volume.number, c.number),
                            page="toshokan", series=c.volume.series, chapter=c,
-                           cdir="manga/%s/Volume %s/Chapter %s/" % (c.volume.series.name, c.volume.number, c.number))
+                           cdir="%s/Volume %s/Chapter %s/" % (c.volume.series.name, c.volume.number, c.number))

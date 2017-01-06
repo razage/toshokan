@@ -10,7 +10,7 @@ if CONFIG.is_file():
     conf = load(open(str(CONFIG)))
 else:
     skey = ''.join([SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
-    conf = {"db_type": "sqlite", "secret_key": skey}
+    conf = {"db_type": "sqlite", "secret_key": skey, "manga_dir": "path to your base manga directory"}
     dump(conf, open(str(CONFIG), 'w'))
 
 if conf['db_type'] == "sqlite":
@@ -23,8 +23,4 @@ SECRET_KEY = conf['secret_key']
 WTF_CSRF_ENABLED = True
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-LIBRARY = Path(join(BASEDIR, "toshokan", "static", "manga"))
-
-RESIZE_ROOT = "E:/Projects/Web/toshokan/toshokan/"
-RESIZE_URL = "http://127.0.0.1:5000"
-RESIZE_CACHE_DIR = ".thumbs"
+LIBRARY = Path(conf['manga_dir'])
