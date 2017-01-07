@@ -6,7 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 from .utils import get_directory_tree, scan_directory, tree2db
 
-
 app = Flask(__name__)
 app.config.from_object('config')
 
@@ -15,8 +14,11 @@ db = SQLAlchemy(app)
 assets = Environment(app)
 assets.url = app.static_url_path
 
-scss = Bundle("scss/main.scss", filters='pyscss', output="css/main.css")
-assets.register('scss_all', scss)
+scss = Bundle("scss/main.scss", filters='pyscss', output="css/compiled.css")
+css = Bundle("bower_components/bootstrap/dist/css/bootstrap.css",
+             "bower_components/jquery-ui/themes/base/jquery-ui.css", scss, filters="cssmin", output="css/main.css")
+
+assets.register('css_all', css)
 
 
 @app.route('/')
