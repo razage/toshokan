@@ -11,6 +11,6 @@ toshokan/static/bower_components
 toshokan/static/manga
 
 # specific files
-config.json
 database.db
 database.db-journal
+settings.json

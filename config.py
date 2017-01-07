@@ -4,14 +4,14 @@ from pathlib import Path
 from random import SystemRandom
 
 BASEDIR = abspath(dirname(__file__))
-CONFIG = Path(join(BASEDIR, "config.json"))
+SETTINGS = Path(join(BASEDIR, "settings.json"))
 
-if CONFIG.is_file():
-    conf = load(open(str(CONFIG)))
+if SETTINGS.is_file():
+    conf = load(open(str(SETTINGS)))
 else:
     skey = ''.join([SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
     conf = {"db_type": "sqlite", "secret_key": skey, "manga_dir": "path to your base manga directory"}
-    dump(conf, open(str(CONFIG), 'w'))
+    dump(conf, open(str(SETTINGS), 'w'))
 
 if conf['db_type'] == "sqlite":
     DB = Path(join(BASEDIR, "database.db"))
