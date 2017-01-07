@@ -4,6 +4,7 @@
         {% assets "css_all" %}
             <link rel="stylesheet" href="{{ ASSET_URL }}">
         {% endassets %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,7 +19,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-3 col-md-2 col-lg-2 sidebar">
-                   {% include "navbar.html" %}
+                   {% include "sidebar.html" %}
                 </div>
                 <div class="col-sm-9 col-md-10 col-lg-10">
                     <div class="viewbox"></div>

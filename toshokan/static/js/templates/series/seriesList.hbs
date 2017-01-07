@@ -1,0 +1,12 @@
+<div class="series-list scroll">
+    {{#each models}}
+        <div class="series media" data-sid="{{attributes.id}}">
+            <div class="media-body">
+                <img class="media-object" src="http://placehold.it/218x325">
+                <p class="caption">{{attributes.name}}</p>
+            </div>
+            <span class="unread">853</span>
+        </div>
+    {{/each}}
+    <span class="cancer"></span>
+</div>

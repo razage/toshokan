@@ -17,7 +17,7 @@ require.config({
     paths: {
         "underscore": "../bower_components/underscore/underscore-min",
         "jquery": "../bower_components/jquery/dist/jquery.min",
-        "jquery-ui": "../bower_components/jquery-ui/jquery-ui.min.js"
+        "jquery-ui": "../bower_components/jquery-ui/jquery-ui.min.js",
         "bootstrap": "../bower_components/bootstrap/dist/js/bootstrap.min",
         "backbone": "../bower_components/backbone/backbone-min",
         "hbs": "../bower_components/require-handlebars-plugin/hbs",
@@ -28,18 +28,17 @@ require.config({
 
 require([
     'jquery',
+    'backbone',
+    'routers/mainRouter',
     'views/topbar',
     'views/sidebar',
     'views/content',
     'bootstrap',
     'slimscroll'
-], function($, TopbarView, SidebarView, ContentView) {
-    $(".scroll").slimScroll({
-        railColor: "#1EBC61",
-        color: "#0EAC51",
-        railVisible: true,
-        height: "auto"
-    });
+], function($, Backbone, MainRouter, TopbarView, SidebarView, ContentView) {
+    var mainRouter = new MainRouter();
+    Backbone.history.start();
+
     var topbarView = new TopbarView();
     var sidebarView = new SidebarView();
     var contentView = new ContentView();

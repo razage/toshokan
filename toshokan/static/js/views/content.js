@@ -8,29 +8,33 @@ define([
         el: ".content",
 
         events: {
-            "click .chapter": "openChapter",
-            "click .series": "openSeries",
-            "click .volume": "openVolume"
+            "click .chapter": "open",
+            "click .series": "open",
+            "click .volume": "open"
         },
 
         initialize: function() {
             console.log("Content initialized");
         },
 
-        openChapter: function(e) {
-            var $target = $(e.currentTarget);
+        open: function(e) {
+            var $target = $(e.currentTarget),
+                urls = {
+                    series: "library/" + $target.data("sid"),
+                    volume: "library/" + $target.data("sid") + "/" + $target.data("vid"),
+                    chapter: "library/" + $target.data("sid") + "/" + $target.data("vid") + "/" + $target.data("cid")
+                },
+                that = this;
 
-            location.href = "/series/" + $target.data("sid") + "/" + $target.data("vid") + "/chapters/" + $target.data("cid");
-        },
-
-        openSeries: function(e) {
-            location.href = "/series/" + $(e.currentTarget).data("sid");
-        },
-
-        openVolume: function(e) {
-            var $target = $(e.currentTarget);
-
-            location.href = "/series/" + $target.data("sid") + "/" + $target.data("vid") + "/chapters";
+            if ($target.hasClass("series")) {
+                Backbone.history.navigate(urls.series, {trigger: true});
+            }
+            else if ($target.hasClass("volume")) {
+                Backbone.history.navigate(urls.volume, {trigger: true});
+            }
+            else if ($target.hasClass("chapter")) {
+                Backbone.history.navigate(urls.chapter, {trigger: true});
+            }
         }
     });
 

@@ -1,0 +1,63 @@
+<div class="media series-info test">
+    <div class="media-left">
+        <img class="media-object" src="http://placehold.it/300x400">
+    </div>
+    <div class="media-body media-middle">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th colspan="2"><h2>{{attributes.name}}</h2></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Author:</td>
+                    <td>
+                        {{#if attributes.author}}
+                            {{attributes.author}}
+                        {{else}}
+                            N/a
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Content Rating:</td>
+                    <td>
+                        {{#if attributes.age_rating}}
+                            {{attributes.age_rating}}
+                        {{else}}
+                            N/a
+                        {{/if}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr />
+</div>
+<div class="series-list scroll">
+    {{#if hasDoujins}}
+        <div class="doujin media">
+            <div class="media-body">
+                <img class="media-object" src="http://placehold.it/218x325">
+                <p class="caption">Doujinshi</p>
+            </div>
+        </div>
+    {{/if}}
+    {{#if hasVolumes}}
+        {{#each attributes.volumes}}
+            <div class="volume media" data-sid="{{this.id}}" data-vid="{{id}}">
+                <div class="media-body">
+                    <img class="media-object" src="http://placehold.it/218x325">
+                    <p class="caption">
+                        {{#if name}}
+                            {{name}}
+                        {{else}}
+                            Volume {{number}}
+                        {{/if}}
+                    </p>
+                </div>
+            </div>
+        {{/each}}
+    {{/if}}
+</div>

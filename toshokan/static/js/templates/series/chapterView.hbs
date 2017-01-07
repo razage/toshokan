@@ -1,0 +1,14 @@
+{{#each attributes.chapters}}
+    <div class="chapter media" data-sid="{{attributes.sid}}" data-vid="{{attributes.id}}" data-cid="{{attributes.cid}}">
+        <div class="media-body">
+            <img class="media-object" src="http://placehold.it/218x325">
+            <p class="caption">
+                {{#if name}}
+                    {{name}}
+                {{else}}
+                    Chapter {{number}}
+                {{/if}}
+            </p>
+        </div>
+    </div>
+{{/each}}

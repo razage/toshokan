@@ -31,8 +31,8 @@ html, body, .row {
 
 .topbar {
     background: $background;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    height: 50px;
+    display: block;
 
     .glyphicon {
         font-size: 25px;
@@ -42,12 +42,12 @@ html, body, .row {
 
 .sidebar {
     background: $accent-1;
-    height: 100vh;
+    height: calc(100vh - 50px);
 }
 
 .content {
   background: $accent-2 !important;
-  height: 100vh;
+  height: calc(100vh - 50px);
 
   .series-list {
     max-width: 90%;
